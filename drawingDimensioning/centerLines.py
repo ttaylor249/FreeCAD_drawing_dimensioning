@@ -107,23 +107,23 @@ class CenterLines:
         maskPen.setWidth(2.0)
         maskHoverPen = QtGui.QPen( QtGui.QColor(0,255,0,255) )
         maskHoverPen.setWidth(2.0)
-        selectionOverlay.generateSelectionGraphicsItems( 
+        selectionOverlay.generateSelectionGraphicsItems(
             dimensionableObjects( V.page ),
             selectFun ,
             transform = V.transform,
-            sceneToAddTo = V.graphicsScene, 
-            doCircles=True, doFittedCircles=True, 
-            maskPen=maskPen, 
-            maskHoverPen=maskHoverPen, 
+            sceneToAddTo = V.graphicsScene,
+            doCircles=True, doFittedCircles=True,
+            maskPen=maskPen,
+            maskHoverPen=maskHoverPen,
             maskBrush = QtGui.QBrush() #clear
             )
         selectionOverlay.addProxyRectToRescaleGraphicsSelectionItems( V.graphicsScene, V.graphicsView, V.width, V.height)
-    def GetResources(self): 
+    def GetResources(self):
         return {
-            'Pixmap' : ':/dd/icons/centerLines.svg', 
-            'MenuText': 'Center Lines', 
+            'Pixmap' : ':/dd/icons/centerLines.svg',
+            'MenuText': 'Center Lines',
             'ToolTip': 'Center Lines',
-            } 
+            }
 FreeCADGui.addCommand('dd_centerLines', CenterLines())
 
 line_maskPen =      QtGui.QPen( QtGui.QColor(0,255,0,100) )
@@ -144,34 +144,34 @@ class CenterLine(CenterLines):
         maskPen.setWidth(0.0)
         maskHoverPen = QtGui.QPen( QtGui.QColor(0,255,0,255) )
         maskHoverPen.setWidth(0.0)
-        selectionOverlay.generateSelectionGraphicsItems( 
-            dimensionableObjects( V.page ), 
+        selectionOverlay.generateSelectionGraphicsItems(
+            dimensionableObjects( V.page ),
             selectFun,
             transform = V.transform,
-            sceneToAddTo = V.graphicsScene, 
+            sceneToAddTo = V.graphicsScene,
             doPoints=True, doMidPoints=True,
             pointWid=1.0,
-            maskPen=maskPen, 
-            maskHoverPen=maskHoverPen, 
+            maskPen=maskPen,
+            maskHoverPen=maskHoverPen,
             maskBrush = maskBrush
             )
-        selectionOverlay.generateSelectionGraphicsItems( 
+        selectionOverlay.generateSelectionGraphicsItems(
             dimensionableObjects( V.page ),
             clearPreviousSelectionItems = False,
-            doLines=True, 
+            doLines=True,
             onClickFun=selectFun,
             transform = V.transform,
-            sceneToAddTo = V.graphicsScene, 
-            maskPen= line_maskPen, 
-            maskHoverPen= line_maskHoverPen, 
+            sceneToAddTo = V.graphicsScene,
+            maskPen= line_maskPen,
+            maskHoverPen= line_maskHoverPen,
             maskBrush = line_maskBrush
             )
         selectionOverlay.addProxyRectToRescaleGraphicsSelectionItems( V.graphicsScene, V.graphicsView, V.width, V.height)
 
-    def GetResources(self): 
+    def GetResources(self):
         return {
-            'Pixmap' : ':/dd/icons/centerLine.svg', 
-            'MenuText': 'Center Line', 
+            'Pixmap' : ':/dd/icons/centerLine.svg',
+            'MenuText': 'Center Line',
             'ToolTip': 'Center Line',
-            } 
+            }
 FreeCADGui.addCommand('dd_centerLine', CenterLine())
